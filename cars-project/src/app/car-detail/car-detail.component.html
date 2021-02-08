@@ -1,0 +1,20 @@
+<div *ngIf="car" class="detail-page">
+
+    <h2>{{car.model | uppercase}} Description</h2>
+    <div>
+      <label>
+        <h4>Car Model Name: <input [(ngModel)]="car.model" placeholder="car"/></h4>
+      </label>
+    </div>
+    <div><span>Number Plate: </span>{{car.numberPlate}}</div>
+    <div>
+      Car Doors: {{car.doors}}
+    </div>
+    <div>
+      Brand of the Car: {{car.brand}}
+    </div>
+    <div>
+      Type Of Power: {{car.typePower}}
+    </div>
+  
+</div>
