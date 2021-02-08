@@ -1,10 +1,11 @@
-<div>
-    <h3>
-        <input type="text" placeholder="Search our cars" [(ngModel)]='term'>
-    </h3>
-    <ol>
-        <li *ngFor="let macchine of listaAuto | filter:term">
-            <a>{{macchine.name}}</a>
-        </li>
-    </ol>
+<div id="search-component">
+  <h3><label for="search-box">Ricerca Auto</label></h3>
+  <input #searchBox id="search-box" (input)="search(searchBox.value)" />
+  <ul class="search-result">
+    <li *ngFor="let macchina of listaAuto | async">
+      <a routerLink="/detail/{{ macchina.id }}">
+        {{ macchina.model }}
+      </a>
+    </li>
+  </ul>
 </div>
