@@ -18,10 +18,6 @@ export class CarsComponent implements OnInit {
     this.getCars();
   }
 
-  onSelect(auto: Car): void {
-    this.selectedCar = auto;
-  }
-
   getCars(): void {
     this.callMyCars.getCars().subscribe((list) => {
       this.listCars = list;

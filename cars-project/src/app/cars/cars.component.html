@@ -2,14 +2,10 @@
 
 <div class="show-room">
   <ol class="list-styles">
-    <li
-      *ngFor="let auto of listCars"
-      [class.selected]="auto === selectedCar"
-      (click)="onSelect(auto)"
-    >
-      <span class="identita">{{ auto.numberPlate }}</span> {{ auto.model }}
+    <li *ngFor="let auto of listCars">
+      <a routerLink="/detail/{{ auto.id }}">
+        <span class="identita">{{ auto.id }}</span> {{ auto.model }}
+      </a>
     </li>
   </ol>
 </div>
-
-<app-car-detail [car]="selectedCar"></app-car-detail>

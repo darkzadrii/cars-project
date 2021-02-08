@@ -8,7 +8,6 @@ import { catchError, map, tap } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class CarsService {
-  
   private carsUrl = 'api/cars';
 
   private handleError<T>(operation = 'operation', result?: T) {
@@ -18,6 +17,7 @@ export class CarsService {
       return of(result as T);
     };
   }
+
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
@@ -28,5 +28,13 @@ export class CarsService {
     return this.http
       .get<Car[]>(this.carsUrl)
       .pipe(catchError(this.handleError<Car[]>('getCars', [])));
+  }
+
+  getCar(id: number): Observable<Car> {
+    const url = `${this.carsUrl}/${id}`;
+    return this.http.get<Car>(url).pipe(
+      tap((_) => console.log(`fetched car id=${id}`)),
+      catchError(this.handleError<Car>(`getCar =${id}`))
+    );
   }
 }
