@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { CarsComponent } from './cars/cars.component';
 
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { DatabaseService } from './database.service';
@@ -12,12 +13,14 @@ import { CarDetailComponent } from './car-detail/car-detail.component';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { BestSellingComponent } from './best-selling/best-selling.component';
+import { CarsSearchComponent } from './cars-search/cars-search.component';
 @NgModule({
   declarations: [
     AppComponent,
     CarsComponent,
     CarDetailComponent,
-    BestSellingComponent
+    BestSellingComponent,
+    CarsSearchComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +31,7 @@ import { BestSellingComponent } from './best-selling/best-selling.component';
     HttpClientInMemoryWebApiModule.forRoot(
       DatabaseService, { dataEncapsulation: false }
     ),
+    Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
