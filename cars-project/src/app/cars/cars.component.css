@@ -1,52 +1,77 @@
 .show-room {
-    align-items: center;
+  align-items: center;
 }
 
 .list-styles {
-    list-style-type: none;
+  list-style-type: none;
+}
+
+.selection {
+  display: flex;
+  flex-direction: row;
+  width: 100%
 }
 
 .show-room {
-    margin: 0 0 2em 0;
-    list-style-type: none;
-    padding: 0;
-    width: 15em;
-  }
-  .show-room li {
-    cursor: pointer;
-    position: relative;
-    left: 0;
-    background-color: rgb(123, 199, 98);
-    margin: .5em;
-    padding: .3em 0;
-    height: 1.6em;
-    border-radius: 8px;
-  }
-  .show-room li:hover {
-    color: #ebebeb;
-    background-color: #25521e;
-    left: .1em;
-  }
-  .show-room li.selected {
-    background-color: #25521e;
-    color: white;
-  }
-  .show-room li.selected:hover {
-    background-color: #25521e;
-    color: white;
-  }
-  .show-room .identita {
-    display: inline-block;
-    font-size: small;
-    color: white;
-    padding: 0.8em 0.7em 0 0.7em;
-    background-color:#25521e;
-    line-height: 1em;
-    position: relative;
-    font-weight: 900;
-    left: -1px;
-    top: -4px;
-    height: 1.8em;
-    margin-right: .8em;
-    border-radius: 8px 0 0 8px;
-  }
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  padding: 0;
+  width: 15em;
+}
+.show-room li {
+  cursor: pointer;
+  position: relative;
+  left: 0;
+  background-color: rgb(123, 199, 98);
+  margin: 0.5em;
+  padding: 0.3em 0;
+  height: 1.6em;
+  border-radius: 8px;
+}
+.show-room li:hover {
+  color: #ebebeb;
+  background-color: #316f28;
+  left: 0.1em;
+}
+.show-room li.selected {
+  background-color: #316f28;
+  color: white;
+}
+.show-room li.selected:hover {
+  background-color: #316f28;
+  color: white;
+}
+.show-room .identita {
+  display: inline-block;
+  font-size: small;
+  color: white;
+  padding: 0.8em 0.7em 0 0.7em;
+  background-color: #316f28;
+  line-height: 1em;
+  position: relative;
+  font-weight: 900;
+  left: -1px;
+  top: -4px;
+  height: 1.8em;
+  margin-right: 0.8em;
+  border-radius: 8px 0 0 8px;
+}
+
+a{
+  color: black!important;
+  text-decoration: none!important;
+}
+.search-box{
+  height: 25px;
+  border-style: none;
+  border-radius: 8px;
+  box-shadow: #316f28 3px 3px 5px;
+}
+
+#power, #doors, #cars{
+  margin-right: 10px;
+  height: 25px;
+  border-style: none;
+  border-radius: 8px;
+  box-shadow: #316f28 3px 3px 5px;
+}

@@ -11,6 +11,14 @@
   list-style-type: none;
 }
 
+#search-box{
+  width: 40%!important;
+  border-radius: 8px;
+  border-style: none;
+  height: 30px!important;
+  box-shadow: 3px 3px 5px;
+}
+
 .search-result li:hover {
   background-color: #648b60;
 }

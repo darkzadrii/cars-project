@@ -1,13 +1,64 @@
 <h1>Show Room</h1>
 
-<app-cars-search></app-cars-search>
+<div class="selection">
+  <form>
+    <label for="cars">Choose by brand: </label>
+    <select name="cars" id="cars" [(ngModel)]="marca">
+      <option value="">None</option>
+      <option *ngFor="let valoreBrand of brands" [value]="valoreBrand">
+        {{valoreBrand}}
+      </option>
+    </select>
+
+    <label for="doors">Choose by number of doors: </label>
+    <select name="doors" id="doors" [(ngModel)]="porte" >
+      <option value="">None</option>
+      <option *ngFor="let valorePorte of doors" [value]="valorePorte">
+        {{valorePorte}}
+      </option>
+    </select>
+
+    <label for="doors">Choose by power: </label>
+    <select name="power" id="power" [(ngModel)]="potenza">
+      <option value="">None</option>
+      <option *ngFor="let valoreAlimentazione of typePower">
+        {{valoreAlimentazione}}
+      </option>
+    </select>
+  </form>
+
+</div>
+<br>
+<label for="research">Search our cars: </label>
+<input class="search-box" type="text" name="research" [(ngModel)]="research"/>
+<br>
+<br>
+<label for="adding">Wanna suggest other cars? Type here </label>
+<br>
+<input #carId type="number" name="adding" placeholder="Number Plate"/>
+<br>
+<input #carModel type="text" name="adding" placeholder="Model"/>
+<br>
+<input #carDoors type="number" name="adding" placeholder="Doors"/>
+<br>
+<input #carBrand type="text" name="adding" placeholder="Brand"/>
+<br>
+<input #carType type="text" name="adding" placeholder="Type of power"/>
+<br>
+<button value="Send Us" (click)="addAuto(carId.value, carModel.value, carBrand.value, carDoors.value, carType.value)">Send Us</button>
 
 <div class="show-room">
   <ol class="list-styles">
-    <li *ngFor="let auto of listCars">
+    <li *ngFor="let auto of listCars | brandcar:marca:porte:potenza:research">
       <a routerLink="/detail/{{ auto.id }}">
         <span class="identita">{{ auto.id }}</span> {{ auto.model }}
       </a>
+      <button (click)="delete(auto)">x</button>
     </li>
   </ol>
+</div>
+
+
+<div>
+
 </div>

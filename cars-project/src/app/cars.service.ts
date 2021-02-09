@@ -9,6 +9,10 @@ import { Car } from './cars/cars-interface';
 export class CarsService {
 
   private carsUrl = 'api/pippo';
+  
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
 
   constructor(private http: HttpClient) {}
 
@@ -29,6 +33,8 @@ export class CarsService {
     return this.http.get<Car[]>(`${this.carsUrl}/?model=${term}`);
   }
 
-
+  aggiungi(auto: Car): Observable<Car>{
+    return this.http.post<Car>(this.carsUrl, auto, this.httpOptions)
+  }
 
 }

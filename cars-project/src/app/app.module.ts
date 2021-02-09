@@ -14,13 +14,15 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { BestSellingComponent } from './best-selling/best-selling.component';
 import { CarsSearchComponent } from './cars-search/cars-search.component';
+import { BrandPipe } from './brand.pipe';
 @NgModule({
   declarations: [
     AppComponent,
     CarsComponent,
     CarDetailComponent,
     BestSellingComponent,
-    CarsSearchComponent
+    CarsSearchComponent,
+    BrandPipe
   ],
   imports: [
     BrowserModule,
