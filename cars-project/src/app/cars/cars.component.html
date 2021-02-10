@@ -53,12 +53,11 @@
       <a routerLink="/detail/{{ auto.id }}">
         <span class="identita">{{ auto.id }}</span> {{ auto.model }}
       </a>
-      <button (click)="delete(auto)">x</button>
+      <button class="delete-button" (click)="delete(auto)">x</button>
     </li>
   </ol>
+  <button (click)="saveButton()">Save</button>
 </div>
-
-
 <div>
-
+  
 </div>

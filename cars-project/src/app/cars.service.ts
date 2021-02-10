@@ -33,8 +33,14 @@ export class CarsService {
     return this.http.get<Car[]>(`${this.carsUrl}/?model=${term}`);
   }
 
+  salva(auto: Car[]): Observable<any>{
+    return this.http.put(this.carsUrl, auto, this.httpOptions)
+    console.log('Success')
+  }
+
   aggiungi(auto: Car): Observable<Car>{
     return this.http.post<Car>(this.carsUrl, auto, this.httpOptions)
   }
+
 
 }

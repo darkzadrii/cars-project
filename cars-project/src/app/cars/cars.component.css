@@ -75,3 +75,7 @@ a{
   border-radius: 8px;
   box-shadow: #316f28 3px 3px 5px;
 }
+
+.delete-button{
+  text-align: right!important;
+}

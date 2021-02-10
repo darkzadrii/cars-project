@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CarsService } from './../cars.service';
 import { Car } from './cars-interface';
 import { BrandPipe } from './../brand.pipe';
-import * as _ from 'lodash'
+import * as _ from 'lodash';
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-cars',
   templateUrl: './cars.component.html',
@@ -13,8 +14,7 @@ export class CarsComponent implements OnInit {
   research: string;
 
   listCars: Car[] = [];
-  selectedCar: Car;
-
+  
   marca: string;
   brands: any = []
 
@@ -24,12 +24,16 @@ export class CarsComponent implements OnInit {
   potenza: string;
   typePower: any = [];
 
-  constructor(private callMyCars: CarsService) {}
+  constructor(private callMyCars: CarsService,private location: Location) {}
 
   brandcar: BrandPipe
 
   ngOnInit() {
     this.getCars();
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 
   getCars(): void {
@@ -45,21 +49,20 @@ export class CarsComponent implements OnInit {
     })
   }
 
-  //da chiedere
-  delete(auto: Car): void {
-    var index = this.listCars.indexOf(auto);
-    this.listCars.splice(index, 1)
+  saveButton(): void {
+    this.callMyCars.salva(this.listCars).subscribe(() => this.goBack())
   }
 
-  addCar(carId: number, carModel: string, carBrand: string, carDoors: number, carType: string): void {
-    var test = {id: carId, doors: carDoors, model: carModel, brand: carBrand, typePower: carType}
-    this.listCars.push(test)
+  //da chiedere
+  delete(auto: any): void {
+    var index = this.listCars.indexOf(auto);
+    this.listCars.splice(index, 1)
   }
 
   addAuto(carId: number, carModel: string, carBrand: string, carDoors: number, carType: string): void {
     var test = {id: carId, doors: carDoors, model: carModel, brand: carBrand, typePower: carType}
     this.callMyCars.aggiungi(test).subscribe(
-      test => this.listCars.push(test)
+      prova => this.listCars.push(prova)
     )
   }
 
