@@ -40,17 +40,13 @@ export class CarsComponent implements OnInit {
 
   getCars(): void {
     this.callMyCars.getCars().subscribe((list) => {
-      this.listCars = list;
-      this.listCars.map((item) => {
-        console.log(this.brands)
-        console.log(item.brand)
-        console.log(this.brands.indexOf(item.brand))
-        if(this.brands.indexOf(item.brand) == -1) this.brands.push(item.brand)
-        
-      })
-      this.listCars.map((item) =>this.doors.push(item.doors))
-      this.listCars.map((item) => this.typePower.push(item.typePower)) 
-      
+      this.listCars = list.map((item) =>{
+        this.brands.push(item.brand);//add filter
+        this.doors.push(item.doors);//add filter
+        this.typePower.push(item.typePower); //add filter
+        return item;
+      });
+
     })
   }
 
@@ -59,14 +55,16 @@ export class CarsComponent implements OnInit {
   }
 
   delete(auto: any): void {
+    // TODO remove var; use let or const
     var index = this.listCars.indexOf(auto);
     this.listCars.splice(index, 1)
   }
 
   addAuto(carId: number, carModel: string, carBrand: string, carDoors: number, carType: string): void {
+    // TODO remove var; use let or const
     var test = {id: carId, doors: carDoors, model: carModel, brand: carBrand, typePower: carType}
     this.callMyCars.aggiungi(test).subscribe(
-      prova => this.listCars.push(prova)
+      prova => this.listCars.push(prova) // TODO remove "prova" use another name
     )
   }
   
