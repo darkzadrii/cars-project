@@ -35,9 +35,7 @@
 <br>
 <label for="adding">Wanna suggest other cars? Type here </label>
 <br>
-
-<!-- Needs better approch -->
-<input #carId type="number" name="adding" placeholder="Number Plate"/>
+<input type="number" name="adding" placeholder="Number Plate" [(ngModel)]="carId"/>
 <br>
 <input #carModel type="text" name="adding" placeholder="Model"/>
 <br>

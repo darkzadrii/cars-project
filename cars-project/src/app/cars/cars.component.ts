@@ -12,11 +12,12 @@ import { Location } from '@angular/common';
 export class CarsComponent implements OnInit {
 
   research: string;
-
+  carId: any;
   listCars: Car[] = [];
   
   marca: string;
   brands: any = []
+  mySet: any = Array.from(new Set(this.brands));
 
   porte: string;
   doors: any = [];
@@ -32,6 +33,7 @@ export class CarsComponent implements OnInit {
     this.getCars();
   }
 
+
   goBack(): void {
     this.location.back();
   }
@@ -44,6 +46,7 @@ export class CarsComponent implements OnInit {
         this.typePower.push(item.typePower); //add filter
         return item;
       });
+
     })
   }
 
@@ -51,7 +54,6 @@ export class CarsComponent implements OnInit {
     this.callMyCars.salva(this.listCars).subscribe(() => this.goBack())
   }
 
-  //da chiedere
   delete(auto: any): void {
     // TODO remove var; use let or const
     var index = this.listCars.indexOf(auto);
@@ -65,6 +67,5 @@ export class CarsComponent implements OnInit {
       prova => this.listCars.push(prova) // TODO remove "prova" use another name
     )
   }
-
   
 }
