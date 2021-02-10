@@ -2,24 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { Car } from './cars/cars-interface';
-import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CarsService {
-  
-  private carsUrl = 'api/cars';
 
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      console.error(error);
-      console.log(`${operation} failed: ${error.message}`);
-      return of(result as T);
-    };
-  }
+  private carsUrl = 'api/pippo';
+  
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
   constructor(private http: HttpClient) {}
@@ -27,6 +19,28 @@ export class CarsService {
   getCars(): Observable<Car[]> {
     return this.http
       .get<Car[]>(this.carsUrl)
-      .pipe(catchError(this.handleError<Car[]>('getCars', [])));
   }
+
+  getCar(id: number): Observable<Car> {
+    const url = `${this.carsUrl}/${id}`;
+    return this.http.get<Car>(url)
+  }
+
+  ricerca(term: string): Observable<Car[]> {
+    if (!term.trim()) {
+      return of([]);
+    }
+    return this.http.get<Car[]>(`${this.carsUrl}/?model=${term}`);
+  }
+
+  salva(auto: Car[]): Observable<any>{
+    return this.http.put(this.carsUrl, auto, this.httpOptions)
+    console.log('Success')
+  }
+
+  aggiungi(auto: Car): Observable<Car>{
+    return this.http.post<Car>(this.carsUrl, auto, this.httpOptions)
+  }
+
+
 }
