@@ -35,6 +35,8 @@
 <br>
 <label for="adding">Wanna suggest other cars? Type here </label>
 <br>
+
+<!-- Needs better approch -->
 <input #carId type="number" name="adding" placeholder="Number Plate"/>
 <br>
 <input #carModel type="text" name="adding" placeholder="Model"/>
@@ -46,6 +48,7 @@
 <input #carType type="text" name="adding" placeholder="Type of power"/>
 <br>
 <button value="Send Us" (click)="addAuto(carId.value, carModel.value, carBrand.value, carDoors.value, carType.value)">Send Us</button>
+<!-- Needs better approch -->
 
 <div class="show-room">
   <ol class="list-styles">
