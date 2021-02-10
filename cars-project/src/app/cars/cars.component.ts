@@ -12,11 +12,12 @@ import { Location } from '@angular/common';
 export class CarsComponent implements OnInit {
 
   research: string;
-
+  carId: any;
   listCars: Car[] = [];
   
   marca: string;
   brands: any = []
+  mySet: any = Array.from(new Set(this.brands));
 
   porte: string;
   doors: any = [];
@@ -32,6 +33,7 @@ export class CarsComponent implements OnInit {
     this.getCars();
   }
 
+
   goBack(): void {
     this.location.back();
   }
@@ -39,9 +41,12 @@ export class CarsComponent implements OnInit {
   getCars(): void {
     this.callMyCars.getCars().subscribe((list) => {
       this.listCars = list;
-      this.listCars.map((item) =>{
-        this.brands.push(item.brand)
-        _.uniq(this.brands)
+      this.listCars.map((item) => {
+        console.log(this.brands)
+        console.log(item.brand)
+        console.log(this.brands.indexOf(item.brand))
+        if(this.brands.indexOf(item.brand) == -1) this.brands.push(item.brand)
+        
       })
       this.listCars.map((item) =>this.doors.push(item.doors))
       this.listCars.map((item) => this.typePower.push(item.typePower)) 
@@ -53,7 +58,6 @@ export class CarsComponent implements OnInit {
     this.callMyCars.salva(this.listCars).subscribe(() => this.goBack())
   }
 
-  //da chiedere
   delete(auto: any): void {
     var index = this.listCars.indexOf(auto);
     this.listCars.splice(index, 1)
@@ -65,6 +69,5 @@ export class CarsComponent implements OnInit {
       prova => this.listCars.push(prova)
     )
   }
-
   
 }
