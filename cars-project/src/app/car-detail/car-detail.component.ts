@@ -23,7 +23,6 @@ export class CarDetailComponent implements OnInit {
 
   getCar(): void {
     const ciao = +this.route.snapshot.paramMap.get('id');
-    console.log(this.route)
     this.carsService.getCar(ciao).subscribe((auto) => (this.car = auto));
   }
 

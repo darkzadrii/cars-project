@@ -8,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Cars Project';
+  hideSpinner: boolean = true
+  hideContent: boolean = false
+  
+  ngOnInit() {
+    setTimeout(() => {
+      this.hideSpinner = false;
+      this.hideContent = true;
+    }, 5000)
+  }
 }
+

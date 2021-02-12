@@ -79,3 +79,8 @@ a{
 .delete-button{
   text-align: right!important;
 }
+
+.detail-page{
+  text-align: center;
+  padding: 10px
+}

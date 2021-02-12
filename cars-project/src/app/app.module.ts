@@ -15,6 +15,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { BestSellingComponent } from './best-selling/best-selling.component';
 import { CarsSearchComponent } from './cars-search/cars-search.component';
 import { BrandPipe } from './brand.pipe';
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +35,8 @@ import { BrandPipe } from './brand.pipe';
     HttpClientInMemoryWebApiModule.forRoot(
       DatabaseService, { dataEncapsulation: false }
     ),
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

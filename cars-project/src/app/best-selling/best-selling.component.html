@@ -2,14 +2,37 @@
 
 <app-cars-search></app-cars-search>
 
-<div class="grid grid-pad">
-  <a
-    *ngFor="let auto of listaAuto"
-    class="col-1-4"
-    routerLink="/detail/{{ auto.id }}"
-  >
+<div class="grid grid-pad fade-in">
+  <a *ngFor="let auto of listaAuto" class="col-1-4" (click)="open(content)">
     <div class="module hero">
       <h4>{{ auto.model }}</h4>
     </div>
+
+    <ng-template #content let-c="close" let-d="dismiss">
+      <button
+        type="button"
+        class="close"
+        aria-label="Close"
+        (click)="d('Cross click')"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+
+      <div class="detail-page">
+        <h2>{{ auto.model | uppercase }} Description</h2>
+        <div>
+          <label>
+            <h4>
+              Car Model Name:
+              <input [(ngModel)]="auto.model" placeholder="car" />
+            </h4>
+          </label>
+        </div>
+        <div><span>Number Plate: </span>{{ auto.id }}</div>
+        <div>Car Doors: {{ auto.doors }}</div>
+        <div>Brand of the Car: {{ auto.brand }}</div>
+        <div>Type Of Power: {{ auto.typePower }}</div>
+      </div>
+    </ng-template>
   </a>
 </div>
