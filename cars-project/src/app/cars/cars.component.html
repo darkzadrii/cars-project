@@ -6,59 +6,104 @@
     <select name="cars" id="cars" [(ngModel)]="marca">
       <option value="">None</option>
       <option *ngFor="let valoreBrand of brands" [value]="valoreBrand">
-        {{valoreBrand}}
+        {{ valoreBrand }}
       </option>
     </select>
 
     <label for="doors">Choose by number of doors: </label>
-    <select name="doors" id="doors" [(ngModel)]="porte" >
+    <select name="doors" id="doors" [(ngModel)]="porte">
       <option value="">None</option>
       <option *ngFor="let valorePorte of doors" [value]="valorePorte">
-        {{valorePorte}}
+        {{ valorePorte }}
       </option>
     </select>
 
-    <label for="doors">Choose by power: </label>
+    <label for="power">Choose by power: </label>
     <select name="power" id="power" [(ngModel)]="potenza">
       <option value="">None</option>
       <option *ngFor="let valoreAlimentazione of typePower">
-        {{valoreAlimentazione}}
+        {{ valoreAlimentazione }}
       </option>
     </select>
   </form>
-
 </div>
-<br>
+<br />
 <label for="research">Search our cars: </label>
-<input class="search-box" type="text" name="research" [(ngModel)]="research"/>
-<br>
-<br>
+<input class="search-box" type="text" name="research" [(ngModel)]="research" />
+<br />
+<br />
 <label for="adding">Wanna suggest other cars? Type here </label>
-<br>
-<input type="number" name="adding" placeholder="Number Plate" [(ngModel)]="carId"/>
-<br>
-<input #carModel type="text" name="adding" placeholder="Model"/>
-<br>
-<input #carDoors type="number" name="adding" placeholder="Doors"/>
-<br>
-<input #carBrand type="text" name="adding" placeholder="Brand"/>
-<br>
-<input #carType type="text" name="adding" placeholder="Type of power"/>
-<br>
-<button value="Send Us" (click)="addAuto(carId.value, carModel.value, carBrand.value, carDoors.value, carType.value)">Send Us</button>
+
+<br />
+<input
+  type="number"
+  name="adding"
+  placeholder="Number Plate"
+  [(ngModel)]="carId"
+/>
+<br />
+<input #carModel type="text" name="adding" placeholder="Model" />
+<br />
+<input #carDoors type="number" name="adding" placeholder="Doors" />
+<br />
+<input #carBrand type="text" name="adding" placeholder="Brand" />
+<br />
+<input #carType type="text" name="adding" placeholder="Type of power" />
+<br />
+<button
+  value="Send Us"
+  (click)="
+    addAuto(
+      carId.value,
+      carModel.value,
+      carBrand.value,
+      carDoors.value,
+      carType.value
+    )
+  "
+>
+  Send Us
+</button>
+
 <!-- Needs better approch -->
+
 
 <div class="show-room">
   <ol class="list-styles">
-    <li *ngFor="let auto of listCars | brandcar:marca:porte:potenza:research">
-      <a routerLink="/detail/{{ auto.id }}">
+    <li *ngFor="let auto of listCars | brandcar: marca:porte:potenza:research">
+      <a (click)="open(content)">
         <span class="identita">{{ auto.id }}</span> {{ auto.model }}
+        
+        <ng-template #content let-c="close" let-d="dismiss">
+          <button
+            type="button"
+            class="close"
+            aria-label="Close"
+            (click)="d('Cross click')"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+
+          <div class="detail-page">
+            <h2>{{ auto.model | uppercase }} Description</h2>
+            <div>
+              <label>
+                <h4>
+                  Car Model Name:
+                  <input [(ngModel)]="auto.model" placeholder="car" />
+                </h4>
+              </label>
+            </div>
+            <div><span>Number Plate: </span>{{ auto.id }}</div>
+            <div>Car Doors: {{ auto.doors }}</div>
+            <div>Brand of the Car: {{ auto.brand }}</div>
+            <div>Type Of Power: {{ auto.typePower }}</div>
+          </div>
+        </ng-template>
       </a>
       <button class="delete-button" (click)="delete(auto)">x</button>
     </li>
   </ol>
   <button (click)="saveButton()">Save</button>
 </div>
-<div>
-  
-</div>
+<div></div>

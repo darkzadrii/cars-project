@@ -1,6 +1,14 @@
-<h1 class="main-title">Cars Project</h1>
-<nav class="nav-style">
+<div *ngIf="hideSpinner" class="d-flex justify-content-center fade-in">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+</div>
+
+<div *ngIf="hideContent" class="fade-in">
+  <h1 class="main-title">Cars Project</h1>
+  <nav class="nav-style">
     <a routerLink="/best-selling">Best Selling</a>
     <a routerLink="/list">List Of Cars</a>
-</nav>
-<router-outlet></router-outlet>
+  </nav>
+  <router-outlet></router-outlet>
+</div>

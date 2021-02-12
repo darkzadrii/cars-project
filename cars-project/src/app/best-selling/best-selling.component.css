@@ -1,4 +1,4 @@
-/* DashboardComponent's private CSS styles */
+
 [class*='col-'] {
     float: left;
     padding-right: 20px;
@@ -58,4 +58,37 @@
     .module {
       min-width: 60px;
     }
-  }
+}
+
+.detail-page{
+  text-align: center;
+  padding: 10px
+}
+
+.loading{
+  display: none;
+}
+
+.spinner-border{
+  height: 150px;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+}
+
+.fade-in{
+	opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 1s;
+}
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}

@@ -16,7 +16,7 @@
   border-radius: 8px;
   border-style: none;
   height: 30px!important;
-  box-shadow: 3px 3px 5px;
+  box-shadow: #316f28 3px 3px 5px;
 }
 
 .search-result li:hover {
