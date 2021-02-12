@@ -42,6 +42,7 @@ export class CarsComponent implements OnInit {
 
   getCars(): void {
     this.callMyCars.getCars().subscribe((list) => {
+
       this.listCars = list;
       this.listCars.map((item) => {
         console.log(this.brands)
@@ -60,7 +61,7 @@ export class CarsComponent implements OnInit {
         }
         
       })
-      
+
     })
   }
 
@@ -69,14 +70,16 @@ export class CarsComponent implements OnInit {
   }
 
   delete(auto: any): void {
+    // TODO remove var; use let or const
     var index = this.listCars.indexOf(auto);
     this.listCars.splice(index, 1)
   }
 
   addAuto(carId: number, carModel: string, carBrand: string, carDoors: number, carType: string): void {
+    // TODO remove var; use let or const
     var test = {id: carId, doors: carDoors, model: carModel, brand: carBrand, typePower: carType}
     this.callMyCars.aggiungi(test).subscribe(
-      prova => this.listCars.push(prova)
+      prova => this.listCars.push(prova) // TODO remove "prova" use another name
     )
   }
 
